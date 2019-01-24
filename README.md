@@ -1,6 +1,6 @@
 #Books and Authors LINQ Query Practice
 
-1. Copy the booksAndAuthors.sql script and paste in workbench to create the database.
+1. Run the booksAndAuthors.sql script and paste in workbench to create the database.
 2. Create an appsettings.json file and paste the following code, changing the username, password and port fields.
 
 ```javascript
@@ -12,9 +12,10 @@
         }
     }
 ```
-3. Run dotnet watch run in command line.
-4. Change the queries in the Index method of the HomeController to display the output.
-5. Foreach query, use the DbSet for the model finding the data for.  I.E. Find Authors... use _context.Authors.QueryMethod
+3. Run dotnet restore to install needed packages
+4. Run dotnet watch run in command line.
+5. Change the queries in the Index method of the HomeController to display the output.
+6. Foreach query, use the DbSet for the model finding the data for.  I.E. Find Authors... use _context.Authors.QueryMethod
 
 ## Level I
 * Find all Authors order by name ascending.
