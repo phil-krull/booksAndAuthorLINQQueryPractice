@@ -1,0 +1,65 @@
+@{
+    ViewData["Title"] = "Books and Authors";
+    // upper Model displays values in a viewmodel
+    List<Author> Allauthors = Model.Allauthors;
+    // lowercase model binds a model to a form
+}
+@model ViewModel
+<div class="row">
+    <div class="col-md-3">
+        <h1>All Authors</h1>
+        <ul>
+            @if(Model.Allauthors != null) {
+                @foreach(Author author in Model.Allauthors) {
+                    <li>@author.Name
+                        @if(author.Wrote != null) {
+                            <ul>
+                                @foreach(Book book in author.Wrote){
+                                    <li>@book.Title</li>
+                                }
+                            </ul>
+                        }
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <h1>All Books</h1>
+        <ul>
+            @if(Model.Allbooks != null) {
+                @foreach(Book book in Model.Allbooks)
+                {
+                    <li>@book.Title written by @book.WrittenBy.Name
+                        @if(book.Publication != null) {
+                            
+                            <ul>
+                                @foreach(Publication publication in book.Publication)
+                                {
+                                    <li>@publication.Publisher.Name</li>
+                                }
+                            </ul>
+                        }
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <h1>All Publishers</h1>
+        <ul>
+            @foreach(Publisher publisher in Model.Allpublishers)
+            {
+                <li>@publisher.Name</li>
+                @if(publisher.Publication != null) {
+                    <ul>
+                        @foreach(Publication publication in publisher.Publication)
+                        {
+                            <li>@publication.Book.Title</li>
+                        }
+                    </ul>
+                }
+            }
+        </ul>
+    </div>
+</div>
